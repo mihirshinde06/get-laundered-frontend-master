@@ -173,7 +173,7 @@ const NewOrderForm = (props) => {
       };
 
       placeOrder(formData);
-      props.handleClose();
+      window.location.replace(process.env.REACT_APP_CHECKOUT_URL)
     } else {
       setError(true);
       setTimeout(() => {
@@ -350,41 +350,6 @@ const NewOrderForm = (props) => {
         />
       </div>
       <div style={{ marginTop: "30px" }}>
-        <Typography
-          variant="body1"
-          gutterBottom
-          style={{ fontWeight: "700", marginBottom: "20px" }}
-        >
-          Please select a payment method -
-        </Typography>
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<PaymentIcon />}
-              checked={cardPayment}
-              onChange={handlePaymentSelection}
-              name="card"
-              color="primary"
-              required={requiredAttributeCard}
-            />
-          }
-          label="Card on delivery"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<MoneyIcon />}
-              checked={cashPayment}
-              onChange={handlePaymentSelection}
-              name="cash"
-              color="primary"
-              required={requiredAttributeCash}
-            />
-          }
-          label="Cash on delivery"
-        />
-      </div>
-      <div style={{ marginTop: "30px" }}>
         <Typography variant="body1" gutterBottom style={{ fontWeight: "700" }}>
           Total - {finalAmount} INR
         </Typography>
@@ -402,7 +367,7 @@ const NewOrderForm = (props) => {
         style={{ marginTop: "20px" }}
         type="submit"
       >
-        Submit
+        Checkout
       </Button>
       <Button
         variant="contained"
